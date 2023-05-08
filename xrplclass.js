@@ -1,4 +1,3 @@
-
 const xrpl = require("xrpl");
 const TransactionPayloads = require("./transactionPayloads.js");
 require("dotenv").config();
@@ -6,9 +5,11 @@ class Xrplclass {
 
     sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    constructor() {
-        this.transactionPayloads = new TransactionPayloads;
+    constructor(currency, issuer) {
+        this.transactionPayloads = new TransactionPayloads(currency, issuer);
         this.client = new xrpl.Client(process.env.XRPL_RPC);
+        this.currency = currency;
+        this.issuer = issuer;
     }
 
     async connect()
@@ -55,11 +56,13 @@ class Xrplclass {
           command: "account_lines",
           account: process.env.XRPL_ACCOUNT_ADDRESS
         });
+        console.log('currency: ', this.currency)
+        console.log('issuer: ', this.issuer)
         if(response.result.lines.length > 0)
         {
             for(let i = 0; i < response.result.lines.length; i++)
             {
-                if(response.result.lines[i].currency == process.env.CURRENCY && response.result.lines[i].account == process.env.CURRENCY_ISSUER)
+                if(response.result.lines[i].currency == this.currency && response.result.lines[i].account == this.issuer)
                 {
                     return response.result.lines[i].balance;
                 }
@@ -68,6 +71,7 @@ class Xrplclass {
             //No Account Lines
             return 0;
         }
+        console.log('line 73: ',response)
         return response.result.account_data.Balance - 10000000;
       }
 

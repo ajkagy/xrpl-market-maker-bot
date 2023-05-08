@@ -2,12 +2,14 @@ const xrpl = require("xrpl");
 require("dotenv").config();
 const Xrplclass = require("./xrplclass.js");
 class Algo {
-  constructor(xrplClass) {
+  constructor(xrplClass, currency, issuer) {
     this.BotCurrentBid = 0;
     this.BotCurrentAsk = 0;
     this.BotBuySequence = 0;
     this.BotSellSequence = 0;
     this.xrplClass = xrplClass;
+    this.currency = currency;
+    this.issuer = issuer
   }
 
   sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -324,13 +326,13 @@ class Algo {
         {
             if(typeof offers[j].taker_gets == "object")
             {
-                if(offers[j].taker_gets.currency == process.env.CURRENCY)
+                if(offers[j].taker_gets.currency == this.currency)
                 {
                     offerReturnObj.push(offers[j])
                 }
             } else if(typeof offers[j].taker_pays == "object")
             {
-                if(offers[j].taker_pays.currency == process.env.CURRENCY)
+                if(offers[j].taker_pays.currency == this.currency)
                 {
                     offerReturnObj.push(offers[j])
                 }

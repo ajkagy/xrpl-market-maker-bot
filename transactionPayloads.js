@@ -1,6 +1,10 @@
 require("dotenv").config();
 class TransactionPayloads {
 
+    constructor(currency, issuer) {
+        this.currency = currency;
+        this.issuer = issuer;
+    }
 
 OfferCancelPayload(offerSequence)
 {
@@ -21,8 +25,8 @@ OfferCreateBuyPayload(xrpAmount, currencyAmount) {
         "Flags": 0,
         "TakerGets": xrpAmount,
         "TakerPays": {
-          "currency": process.env.CURRENCY,
-          "issuer": process.env.CURRENCY_ISSUER,
+          "currency": this.currency,
+          "issuer": this.issuer,
           "value": currencyAmount
         }
     };
@@ -35,8 +39,8 @@ OfferCreateSellPayload(xrpAmount, currencyAmount) {
         "Fee": process.env.TXN_FEE,
         "Flags": 0,
         "TakerGets": {
-            "currency": process.env.CURRENCY,
-            "issuer": process.env.CURRENCY_ISSUER,
+            "currency": this.currency,
+            "issuer": this.issuer,
             "value": currencyAmount
           },
         "TakerPays": xrpAmount
@@ -48,8 +52,8 @@ OfferCreateSellPayload(xrpAmount, currencyAmount) {
         return {
             "command": "book_offers",
             "taker_gets": {
-            "currency": process.env.CURRENCY,
-            "issuer": process.env.CURRENCY_ISSUER
+            "currency": this.currency,
+            "issuer": this.issuer
             },
             "taker_pays": {
             "currency": "XRP"
@@ -66,8 +70,8 @@ OfferCreateSellPayload(xrpAmount, currencyAmount) {
                 "currency": "XRP"
             },
             "taker_pays": {
-            "currency": process.env.CURRENCY,
-            "issuer": process.env.CURRENCY_ISSUER
+            "currency": this.currency,
+            "issuer": this.issuer
             },
             "limit": 2
         }
