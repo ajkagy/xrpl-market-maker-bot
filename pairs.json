@@ -1,10 +1,12 @@
 [
   {
     "currency": "STX",
-    "currency_issuer": "rSTAYKxF2K77ZLZ8GoAwTqPGaphAqMyXV"
+    "currency_issuer": "rSTAYKxF2K77ZLZ8GoAwTqPGaphAqMyXV",
+    "spread": 15
   },
   {
     "currency": "5041524300000000000000000000000000000000",
-    "currency_issuer": "rE42R1mbjGtMzzFTL5aqpbTrj3TDVq71jo"
+    "currency_issuer": "rE42R1mbjGtMzzFTL5aqpbTrj3TDVq71jo",
+    "spread": 15
   }
 ]

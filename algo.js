@@ -2,14 +2,15 @@ const xrpl = require("xrpl");
 require("dotenv").config();
 const Xrplclass = require("./xrplclass.js");
 class Algo {
-  constructor(xrplClass, currency, issuer) {
+  constructor(xrplClass, currency, issuer, spread) {
     this.BotCurrentBid = 0;
     this.BotCurrentAsk = 0;
     this.BotBuySequence = 0;
     this.BotSellSequence = 0;
     this.xrplClass = xrplClass;
     this.currency = currency;
-    this.issuer = issuer
+    this.issuer = issuer;
+    this.spread = spread;
   }
 
   sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));

@@ -5,11 +5,12 @@ class Xrplclass {
 
     sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    constructor(currency, issuer) {
+    constructor(currency, issuer, spread) {
         this.transactionPayloads = new TransactionPayloads(currency, issuer);
         this.client = new xrpl.Client(process.env.XRPL_RPC);
         this.currency = currency;
         this.issuer = issuer;
+        this.spread = spread;
     }
 
     async connect()

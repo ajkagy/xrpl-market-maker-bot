@@ -22,5 +22,5 @@ if (cluster.isMaster) {
   var pair = getPair(pairIndex);
   var currency = pair.currency;
   var issuer = pair.currency_issuer;
-  require("./bot.js")(currency, issuer)
+  require("./bot.js")(currency, issuer, spread)
 }
