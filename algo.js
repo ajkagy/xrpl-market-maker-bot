@@ -48,7 +48,7 @@ class Algo {
 
       if (offerObjArray.length == 0) {
         let spread = this.calcPercentage(bestAsk, bestBid);
-        if (spread - 1 < process.env.LOWEST_SPREAD_THRESHOLD) {
+        if (spread - 1 < this.spread) {
           //Our spread is too small. Exit
           console.log(
             "Failed to place any orders, spread is lower than minimum threshold. Current Spread: " +
@@ -91,8 +91,8 @@ class Algo {
           if (this.BotBuySequence != 0) {
 
             let spread = this.calcPercentage(bestAsk, bestBid);
-            console.log(spread,process.env.LOWEST_SPREAD_THRESHOLD )
-            if ((spread - 0.5) < process.env.LOWEST_SPREAD_THRESHOLD) {
+            console.log(spread,this.spread )
+            if ((spread - 0.5) < this.spread) {
               //Our spread is too small. Exit
               console.log(
                 "Failed to replace any orders, spread threshold is too low. Spread: " +
@@ -120,7 +120,7 @@ class Algo {
             if (this.BotBuySequence != 0) {
   
               let spread = this.calcPercentage(bestAsk, bestBid);
-              if ((spread - 0.5) < process.env.LOWEST_SPREAD_THRESHOLD) {
+              if ((spread - 0.5) < this.spread) {
                 //Our spread is too small. Exit
                 console.log(
                   "Failed to replace any orders, spread threshold is too low. Spread: " +
@@ -155,7 +155,7 @@ class Algo {
             await this.replaceSellOrder(secondBestAsk);
         } else {
           let spread = this.calcPercentage(bestAsk, bestBid);
-          if (spread < process.env.LOWEST_SPREAD_THRESHOLD) {
+          if (spread < this.spread) {
             //Our spread is too small. Exit
             console.log(
               "Spread is too low, cancelling orders: " +
