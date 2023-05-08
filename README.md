@@ -13,12 +13,13 @@ XRPL_ACCOUNT_ADDRESS=
 
 XRPL_ACCOUNT_SECRET=
 
-CURRENCY=5041524300000000000000000000000000000000
-
-CURRENCY_ISSUER=rE42R1mbjGtMzzFTL5aqpbTrj3TDVq71jo
-
 LOWEST_SPREAD_THRESHOLD=15
 
 POSITION_SIZE=75
 
 TXN_FEE=15
+
+to run the script run `node cluster.js`
+update the pairs.json file with each pair you want to market make
+
+-need to add in spread definition for each individual pair
