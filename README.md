@@ -4,7 +4,8 @@ a rough proof of concept market making bot for the XRPL dex
 Steps to install
 1. clone the repo
 2. run npm i
-3. Add the .env File with the following values. Change the appropriate values to what currency on the XRPL dex you'd like to trade with.
+3. Add the .env File with the following values below. Change the appropriate values to what currency on the XRPL dex you'd like to trade with.
+4. run node bot.js
 
 XRPL_RPC=wss://s1.ripple.com/
 
